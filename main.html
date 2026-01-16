@@ -474,7 +474,35 @@
                 font-size: 28px;
             }
         }
+        /* Left intro area for typewriter text */
+        .intro {
+            position: absolute;
+            left: 28px;
+            top: 80px;
+            max-width: 420px;
+            color: #000; /* black font as requested */
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.1;
+            z-index: 500;
+            pointer-events: none; /* non-interactive */
+        }
+
+        /* Typewriter cursor */
+        .typewriter {
+            display: inline-block;
+        }
+        .typewriter::after {
+            content: '|';
+            margin-left: 6px;
+            opacity: 1;
+            animation: blink 1s steps(2, start) infinite;
+            color: #000;
+        }
+        @keyframes blink { to { opacity: 0; } }
     </style>
+    <!-- Flowbase Booster [Typewriter] (optional - fallback provided) -->
+    <script src="https://cdn.jsdelivr.net/npm/@flowbase-co/boosters-typewriter@1.0.1/dist/typewriter.min.js" type="text/javascript"></script>
 </head>
 <body>
     <div class="menu-bar">
@@ -492,6 +520,10 @@
     </div>
 
     <div class="desktop" id="desktop">
+        <!-- Left intro text (typewriter) -->
+        <div class="intro" id="intro">
+            <span id="typewriter" class="typewriter" aria-live="polite"></span>
+        </div>
         <!-- Desktop Icons ddjdjdjjdjjdjd -->
         <div class="desktop-icon" onclick="openWindow('about-window')">
             <div class="desktop-icon-image documents"><img src="icons/contacts.png" alt="About"></div>
@@ -826,6 +858,46 @@
                 win.style.transform = `translate(${moveX}px, ${moveY}px)`;
             });
         });
+            // Typewriter initialization for the left intro
+            (function(){
+                const el = document.getElementById('typewriter');
+                const text = "Hello there, I'm Bidisha Dalai";
+
+                // Try Flowbase Typewriter if loaded
+                try {
+                    if (typeof window.Typewriter !== 'undefined') {
+                        // Common Flowbase API variations - attempt safely
+                        try {
+                            // If constructor accepts element
+                            new Typewriter(el, { loop: false, delay: 75 }).type(text).start();
+                            return;
+                        } catch (e) {
+                            // Try alternate call signature
+                            try { Typewriter.init && Typewriter.init(el, { strings: [text], loop: false }); return; } catch(e){}
+                        }
+                    }
+                } catch (e) {
+                    // fall through to fallback
+                }
+
+                // Fallback typewriter implementation
+                function fallbackTypewriter(node, message, speed=60) {
+                    node.textContent = '';
+                    let i = 0;
+                    function step(){
+                        if (i <= message.length) {
+                            node.textContent = message.slice(0, i);
+                            i++;
+                            setTimeout(step, speed);
+                        } else {
+                            // stop cursor blink after finish if desired
+                        }
+                    }
+                    step();
+                }
+
+                if (el) fallbackTypewriter(el, text, 60);
+            })();
     </script>
 </body>
 </html>
