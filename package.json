@@ -7,5 +7,8 @@
   },
   "devDependencies": {
     "http-server": "^14.1.1"
+  },
+  "dependencies": {
+    "pre-commit": "^1.2.2"
   }
 }
