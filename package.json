@@ -1,0 +1,11 @@
+{
+  "name": "personal-website",
+  "version": "1.0.0",
+  "description": "Static personal website served locally",
+  "scripts": {
+    "dev": "http-server -p 9000"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
