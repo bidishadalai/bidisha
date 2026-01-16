@@ -1,8 +1,1 @@
-# bidisha
-# bidisha
-# bidisha
-# bidisha
-# bidisha
-# bdalai
-# bdalai
-# bidisha
+my cutsie website
