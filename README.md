@@ -1,1 +1,1 @@
-simple html/css personal website still in progress !
+macOS inspired html/css personal website still in progress !
