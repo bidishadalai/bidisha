@@ -1,3 +1,1 @@
-personal website still in progress 
-
-( experimenting stage ???)
+simple html/css personal website still in progress !
