@@ -938,25 +938,84 @@
             </div>
         </div>
 
+        <!-- Sticky Notes Window -->
+        <div class="window" id="notes-window" style="left: 50px; top: 100px; width: 400px; height: 500px; background: #FFFACD;">
+            <div class="window-header" style="background: #FFFACD;">
+                <div class="window-controls">
+                    <div class="window-control close" onclick="closeWindow('notes-window')"></div>
+                    <div class="window-control minimize"></div>
+                    <div class="window-control maximize" onclick="toggleFullscreen('notes-window')"></div>
+                </div>
+                <div class="window-title">To Do</div>
+                <div style="width: 52px;"></div>
+            </div>
+            <div class="window-content" style="background: #FFFACD; color: #1a1a1a; padding: 20px;">
+                <div id="sticky-notes-list" style="font-size: 16px; line-height: 1.8;">
+                    <div style="margin-bottom: 12px;">
+                        <input type="checkbox" id="note1" style="margin-right: 10px; cursor: pointer;"> 
+                        <label for="note1" style="cursor: pointer;">Land my dream UX job</label>
+                    </div>
+                    <div style="margin-bottom: 12px;">
+                        <input type="checkbox" id="note2" style="margin-right: 10px; cursor: pointer;"> 
+                        <label for="note2" style="cursor: pointer;">Drink water</label>
+                    </div>
+                    <div style="margin-bottom: 12px;">
+                        <input type="checkbox" id="note3" style="margin-right: 10px; cursor: pointer;"> 
+                        <label for="note3" style="cursor: pointer; text-decoration: line-through;">Move to the US</label>
+                    </div>
+                    <div style="margin-bottom: 12px;">
+                        <input type="checkbox" id="note4" style="margin-right: 10px; cursor: pointer;"> 
+                        <label for="note4" style="cursor: pointer;">Finish grad school without losing my mind</label>
+                    </div>
+                    <div style="margin-bottom: 12px;">
+                        <input type="checkbox" id="note5" style="margin-right: 10px; cursor: pointer;"> 
+                        <label for="note5" style="cursor: pointer;">Build that banger spotify playlist</label>
+                    </div>
+                    <div style="margin-bottom: 12px;">
+                        <input type="checkbox" id="note6" style="margin-right: 10px; cursor: pointer;"> 
+                        <label for="note6" style="cursor: pointer;">World domination</label>
+                    </div>
+                    <div style="margin-bottom: 12px;">
+                        <input type="checkbox" id="note7" style="margin-right: 10px; cursor: pointer;"> 
+                        <label for="note7" style="cursor: pointer; text-decoration: line-through;">Get really good at making pasta</label>
+                    </div>
+                    <div style="margin-bottom: 12px;">
+                        <input type="checkbox" id="note8" style="margin-right: 10px; cursor: pointer;"> 
+                        <label for="note8" style="cursor: pointer;">Travel somewhere new every year</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Scattered Desktop Documents -->
-        <div style="position: absolute; left: 150px; top: 150px; display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; text-align: center;">
-            <img src="icons/folder.png" alt="folder" style="width: 80px; height: 80px; object-fit: contain;">
+        <div style="position: absolute; left: 100px; top: 200px; display: flex; flex-direction: column; align-items: center; gap: 1px; cursor: pointer; text-align: center;" onclick="openWindow('finder-window')">
+            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #4DA6FF 0%, #2E8BC0 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 40px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-top: 8px solid rgba(255,255,255,0.3); border-left: 2px solid rgba(255,255,255,0.2); position: relative;">
+                <img src="icons/folder.png" alt="folder" style="width: 60px; height: 60px; object-fit: contain; filter: brightness(0) invert(1);">
+            </div>
             <div style="font-size: 12px; color: #333; font-weight: 500; width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Resume</div>
         </div>
-        <div style="position: absolute; left: 450px; top: 200px; display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; text-align: center;">
-            <img src="icons/folder.png" alt="folder" style="width: 80px; height: 80px; object-fit: contain;">
+        <div style="position: absolute; left: 450px; top: 400px; display: flex; flex-direction: column; align-items: center; gap: 1px; cursor: pointer; text-align: center;" onclick="openWindow('finder-window')">
+            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #4DA6FF 0%, #2E8BC0 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 40px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-top: 8px solid rgba(255,255,255,0.3); border-left: 2px solid rgba(255,255,255,0.2); position: relative;">
+                <img src="icons/folder.png" alt="folder" style="width: 60px; height: 60px; object-fit: contain; filter: brightness(0) invert(1);">
+            </div>
             <div style="font-size: 12px; color: #333; font-weight: 500; width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Project 02</div>
         </div>
-        <div style="position: absolute; left: 250px; top: 350px; display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; text-align: center;">
-            <img src="icons/folder.png" alt="folder" style="width: 80px; height: 80px; object-fit: contain;">
+        <div style="position: absolute; left: 100px; top: 350px; display: flex; flex-direction: column; align-items: center; gap: 1px; cursor: pointer; text-align: center;" onclick="openWindow('finder-window')">
+            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #4DA6FF 0%, #2E8BC0 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 40px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-top: 8px solid rgba(255,255,255,0.3); border-left: 2px solid rgba(255,255,255,0.2); position: relative;">
+                <img src="icons/folder.png" alt="folder" style="width: 60px; height: 60px; object-fit: contain; filter: brightness(0) invert(1);">
+            </div>
             <div style="font-size: 12px; color: #333; font-weight: 500; width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Project 01</div>
         </div>
-        <div style="position: absolute; left: 600px; top: 300px; display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; text-align: center;">
-            <img src="icons/folder.png" alt="folder" style="width: 80px; height: 80px; object-fit: contain;">
+        <div style="position: absolute; right: 600px; top: 30px; display: flex; flex-direction: column; align-items: center; gap: 1px; cursor: pointer; text-align: center;" onclick="openWindow('finder-window')">
+            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #4DA6FF 0%, #2E8BC0 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 40px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-top: 8px solid rgba(255,255,255,0.3); border-left: 2px solid rgba(255,255,255,0.2); position: relative;">
+                <img src="icons/folder.png" alt="folder" style="width: 60px; height: 60px; object-fit: contain; filter: brightness(0) invert(1);">
+            </div>
             <div style="font-size: 12px; color: #333; font-weight: 500; width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Project 03</div>
         </div>
-        <div style="position: absolute; left: 550px; top: 480px; display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; text-align: center;">
-            <img src="icons/folder.png" alt="folder" style="width: 80px; height: 80px; object-fit: contain;">
+        <div style="position: absolute; right: 100px; top: 480px; display: flex; flex-direction: column; align-items: center; gap: 1px; cursor: pointer; text-align: center;" onclick="openWindow('finder-window')">
+            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #4DA6FF 0%, #2E8BC0 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 40px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-top: 8px solid rgba(255,255,255,0.3); border-left: 2px solid rgba(255,255,255,0.2); position: relative;">
+                <img src="icons/folder.png" alt="folder" style="width: 60px; height: 60px; object-fit: contain; filter: brightness(0) invert(1);">
+            </div>
             <div style="font-size: 12px; color: #333; font-weight: 500; width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Project 04</div>
         </div>
     </div>
@@ -965,7 +1024,7 @@
         <div class="dock-icon about" data-label="Finder" onclick="openWindow('finder-window')"><img src="icons/finder.png" alt="Finder"></div>
         <div class="dock-icon about" data-label="Contacts" onclick="openWindow('about-window')"><img src="icons/contacts.png" alt="Contacts"></div>
         <div class="dock-icon resume" data-label="Resume" onclick="openWindow('resume-window')"><img src="icons/ZIP.png" alt="Resume"></div>
-        <!-- <div class="dock-icon experience" data-label="Notes" onclick="openWindow('experience-window')"><img src="icons/notes.png" alt="Notes"></div> -->
+        <div class="dock-icon notes" data-label="Notes" onclick="openWindow('notes-window')" style="background: #FFFACD; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 28px; width: 44px; height: 44px;">📝</div>
         <div class="dock-icon projects" data-label="Notes" onclick="openWindow('projects-window')"><img src="icons/notes.png" alt="Notes"></div>
         <div class="dock-icon photos" data-label="Photos" onclick="openWindow('photos-window')"><img src="icons/photos.png" alt="Photos"></div>
     
