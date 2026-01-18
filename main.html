@@ -883,44 +883,81 @@
                     <div class="window-control minimize"></div>
                     <div class="window-control maximize" onclick="toggleFullscreen('finder-window')"></div>
                 </div>
-                <div class="window-title">Finder</div>
+                <div class="window-title">Recents</div>
                 <div style="width: 52px;"></div>
             </div>
-            <div class="window-content" style="padding: 24px; background: #fff; overflow-y: auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 24px; align-content: flex-start;">
-                <!-- Document Items in Grid View -->
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; text-align: center;">
-                    <img src="icons/folder.png" alt="folder" style="width: 80px; height: 80px; object-fit: contain;">
-                    <div style="font-size: 12px; color: #333; font-weight: 500; max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Resume Dec 2025</div>
+            <div style="display: flex; flex: 1; overflow: hidden; background: #fff;">
+                <!-- Sidebar -->
+                <div style="width: 180px; background: #f5f5f7; border-right: 1px solid #e0e0e0; padding: 12px 0; overflow-y: auto;">
+                    <div style="font-size: 11px; font-weight: 700; color: #999; text-transform: uppercase; margin: 8px 16px; letter-spacing: 0.3px;">Favorites</div>
+                    <div style="padding: 6px 12px; margin: 0 8px; cursor: pointer; font-size: 13px; color: #333; background: #e8e8e8; border-radius: 6px;">🔵 Recents</div>
+                    <div style="padding: 6px 12px; margin: 4px 8px; cursor: pointer; font-size: 13px; color: #666; border-radius: 6px;">📄 Documents</div>
+                    <div style="padding: 6px 12px; margin: 4px 8px; cursor: pointer; font-size: 13px; color: #666; border-radius: 6px;">🖥️ Desktop</div>
+                    <div style="padding: 6px 12px; margin: 4px 8px; cursor: pointer; font-size: 13px; color: #666; border-radius: 6px;">📥 Downloads</div>
+                    <div style="padding: 6px 12px; margin: 4px 8px; cursor: pointer; font-size: 13px; color: #666; border-radius: 6px;">📡 AirDrop</div>
+                    <div style="padding: 6px 12px; margin: 4px 8px; cursor: pointer; font-size: 13px; color: #666; border-radius: 6px;">🏠 bidishadalai</div>
+                    <div style="font-size: 11px; font-weight: 700; color: #999; text-transform: uppercase; margin: 16px 16px 8px 16px; letter-spacing: 0.3px;">iCloud</div>
+                    <div style="padding: 6px 12px; margin: 4px 8px; cursor: pointer; font-size: 13px; color: #666; border-radius: 6px;">☁️ iCloud Drive</div>
                 </div>
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; text-align: center;">
-                    <img src="icons/folder.png" alt="folder" style="width: 80px; height: 80px; object-fit: contain;">
-                    <div style="font-size: 12px; color: #333; font-weight: 500; max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Simplingo</div>
-                </div>
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; text-align: center;">
-                    <img src="icons/folder.png" alt="folder" style="width: 80px; height: 80px; object-fit: contain;">
-                    <div style="font-size: 12px; color: #333; font-weight: 500; max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">AbsolutMess</div>
-                </div>
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; text-align: center;">
-                    <img src="icons/folder.png" alt="folder" style="width: 80px; height: 80px; object-fit: contain;">
-                    <div style="font-size: 12px; color: #333; font-weight: 500; max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Leafpress</div>
-                </div>
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; text-align: center;">
-                    <img src="icons/folder.png" alt="folder" style="width: 80px; height: 80px; object-fit: contain;">
-                    <div style="font-size: 12px; color: #333; font-weight: 500; max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Amazon</div>
-                </div>
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; text-align: center;">
-                    <img src="icons/folder.png" alt="folder" style="width: 80px; height: 80px; object-fit: contain;">
-                    <div style="font-size: 12px; color: #333; font-weight: 500; max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">__init__.py</div>
-                </div>
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; text-align: center;">
-                    <img src="icons/folder.png" alt="folder" style="width: 80px; height: 80px; object-fit: contain;">
-                    <div style="font-size: 12px; color: #333; font-weight: 500; max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">images.png</div>
-                </div>
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; text-align: center;">
-                    <img src="icons/folder.png" alt="folder" style="width: 80px; height: 80px; object-fit: contain;">
-                    <div style="font-size: 12px; color: #333; font-weight: 500; max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Screenshots</div>
+                <!-- Grid Content -->
+                <div style="flex: 1; background: #fff; padding: 24px; overflow-y: auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 24px; align-content: flex-start;">
+                    <!-- Document Items -->
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; text-align: center;">
+                        <img src="icons/folder.png" alt="folder" style="width: 80px; height: 80px; object-fit: contain;">
+                        <div style="font-size: 12px; color: #333; font-weight: 500; max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Resume Dec 2025</div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; text-align: center;">
+                        <img src="icons/folder.png" alt="folder" style="width: 80px; height: 80px; object-fit: contain;">
+                        <div style="font-size: 12px; color: #333; font-weight: 500; max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Simplingo</div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; text-align: center;">
+                        <img src="icons/folder.png" alt="folder" style="width: 80px; height: 80px; object-fit: contain;">
+                        <div style="font-size: 12px; color: #333; font-weight: 500; max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">AbsolutMess</div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; text-align: center;">
+                        <img src="icons/folder.png" alt="folder" style="width: 80px; height: 80px; object-fit: contain;">
+                        <div style="font-size: 12px; color: #333; font-weight: 500; max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Leafpress</div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; text-align: center;">
+                        <img src="icons/folder.png" alt="folder" style="width: 80px; height: 80px; object-fit: contain;">
+                        <div style="font-size: 12px; color: #333; font-weight: 500; max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Amazon</div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; text-align: center;">
+                        <img src="icons/folder.png" alt="folder" style="width: 80px; height: 80px; object-fit: contain;">
+                        <div style="font-size: 12px; color: #333; font-weight: 500; max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">__init__.py</div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; text-align: center;">
+                        <img src="icons/folder.png" alt="folder" style="width: 80px; height: 80px; object-fit: contain;">
+                        <div style="font-size: 12px; color: #333; font-weight: 500; max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">images.png</div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; text-align: center;">
+                        <img src="icons/folder.png" alt="folder" style="width: 80px; height: 80px; object-fit: contain;">
+                        <div style="font-size: 12px; color: #333; font-weight: 500; max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Screenshots</div>
+                    </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Scattered Desktop Documents -->
+        <div style="position: absolute; left: 150px; top: 150px; display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; text-align: center;">
+            <img src="icons/folder.png" alt="folder" style="width: 80px; height: 80px; object-fit: contain;">
+            <div style="font-size: 12px; color: #333; font-weight: 500; width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Resume</div>
+        </div>
+        <div style="position: absolute; left: 450px; top: 200px; display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; text-align: center;">
+            <img src="icons/folder.png" alt="folder" style="width: 80px; height: 80px; object-fit: contain;">
+            <div style="font-size: 12px; color: #333; font-weight: 500; width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Project 02</div>
+        </div>
+        <div style="position: absolute; left: 250px; top: 350px; display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; text-align: center;">
+            <img src="icons/folder.png" alt="folder" style="width: 80px; height: 80px; object-fit: contain;">
+            <div style="font-size: 12px; color: #333; font-weight: 500; width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Project 01</div>
+        </div>
+        <div style="position: absolute; left: 600px; top: 300px; display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; text-align: center;">
+            <img src="icons/folder.png" alt="folder" style="width: 80px; height: 80px; object-fit: contain;">
+            <div style="font-size: 12px; color: #333; font-weight: 500; width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Project 03</div>
+        </div>
+        <div style="position: absolute; left: 550px; top: 480px; display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; text-align: center;">
+            <img src="icons/folder.png" alt="folder" style="width: 80px; height: 80px; object-fit: contain;">
+            <div style="font-size: 12px; color: #333; font-weight: 500; width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Project 04</div>
         </div>
     </div>
 
