@@ -21,7 +21,6 @@
             --bs-body-color-rgb: 0, 0, 0;
             --bs-body-bg: #ffffff;
             --bs-body-bg-rgb: 255, 255, 255;
-            position: relative;
         }
 
         body::before {
@@ -33,9 +32,7 @@
             height: 100%;
             background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
             background-size: 16px 16px;
-            -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 70%, transparent 100%);
-            mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 70%, transparent 100%);
-            z-index: 0;
+            z-index: -1;
             pointer-events: none;
         }
 
@@ -85,8 +82,8 @@
             flex-direction: column;
             align-items: flex-end;
             gap: 20px;
-            overflow: hidden;
-            z-index: 10;
+            overflow: visible;
+            z-index: 100;
         }
 
         .desktop-icon {
@@ -120,7 +117,6 @@
             align-items: center;
             justify-content: center;
             font-size: 40px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
@@ -330,7 +326,14 @@
             background: transparent;
             color: white;
             position: relative;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .dock-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px;
+            display: block;
         }
 
         /* Image inside dock icon */
@@ -419,6 +422,117 @@
             color: #6e6e73;
         }
 
+        /* Notes App Styling */
+        .notes-container {
+            display: flex;
+            height: 100%;
+            gap: 0;
+        }
+
+        .notes-sidebar {
+            width: 280px;
+            border-right: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 12px;
+            overflow-y: auto;
+            background: #ffffff;
+        }
+
+        .notes-list {
+            list-style: none;
+        }
+
+        .note-item {
+            padding: 12px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: transparent;
+            border-left: 3px solid transparent;
+            position: relative;
+        }
+
+        .note-item:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .note-item.active {
+            background: #fef3c7;
+            border-left-color: #f59e0b;
+        }
+
+        .note-item.pinned::before {
+            content: '📌';
+            position: absolute;
+            right: 8px;
+            top: 8px;
+            font-size: 12px;
+        }
+
+        .note-item-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .note-title {
+            font-weight: 600;
+            font-size: 14px;
+            color: #1d1d1f;
+            flex: 1;
+            word-break: break-word;
+        }
+
+        .note-date {
+            font-size: 12px;
+            color: #a1a1a6;
+            margin-bottom: 4px;
+        }
+
+        .note-preview {
+            font-size: 12px;
+            color: #a1a1a6;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .notes-content {
+            flex: 1;
+            padding: 24px;
+            overflow-y: auto;
+            background: #ffffff;
+        }
+
+        .note-view-header {
+            margin-bottom: 24px;
+        }
+
+        .note-view-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 4px;
+        }
+
+        .note-view-date {
+            font-size: 13px;
+            color: #a1a1a6;
+            font-weight: 400;
+        }
+
+        .note-view-text {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #1d1d1f;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
         .photo-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -483,15 +597,17 @@
         /* left for type tex <3 */
         .intro {
             position: absolute;
-            left: 28px;
-            top: 80px;
-            max-width: 420px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 500px;
             color: #000; /* black font as requested */
             font-size: 28px;
             font-weight: 700;
             line-height: 1.1;
             z-index: 500;
             pointer-events: none; /* non-interactive */
+            text-align: center;
         }
 
         /* Typewriter cursor */
@@ -541,14 +657,14 @@
             <div class="desktop-icon-label">Resume</div>
         </div>
         
-        <div class="desktop-icon" onclick="openWindow('experience-window')">
+        <!--<div class="desktop-icon" onclick="openWindow('experience-window')">
             <div class="desktop-icon-image movies"><img src="icons/notes.png" alt="Experience"></div>
             <div class="desktop-icon-label">Notes</div>
-        </div>
+        </div>-->
         
         <div class="desktop-icon" onclick="openWindow('projects-window')">
-            <div class="desktop-icon-image presentations"><img src="icons/finder.png" alt="Projects"></div>
-            <div class="desktop-icon-label">Finder</div>
+            <div class="desktop-icon-image presentations"><img src="icons/notes.png" alt="Projects"></div>
+            <div class="desktop-icon-label">Notes</div>
         </div>
         
         <div class="desktop-icon" onclick="openWindow('photos-window')">
@@ -573,9 +689,27 @@
                 <div style="width: 52px;"></div>
             </div>
             <div class="window-content">
-                <h2>Hey, I'm [Your Name] 👋</h2>
-                <p>I'm a passionate software engineering student obsessed with building beautiful, performant applications that people love to use.</p>
-                <p>I thrive on turning complex problems into elegant solutions, and I'm constantly exploring the latest in web technologies, system design, and developer tooling.</p>
+                <h2>Hey, I'm Bidisha Dalai 👋</h2>
+                <p>I'm currently a junior at the University of Texas at San Antonio studying Computer Science with a concentration in Cybersecurity.</p>
+                <p>Outside of my studies, I love learning and engaging in discourse about geography, foreign politics, and cultures. I also like music and have been singing since I was 8.</p>
+                <p>I have my personal contacts and social media linked below. Looking forward to getting to know you!</p>
+                
+                
+                <p style="margin-top: 28px;"><strong> Personal Email:</strong><br>
+                <a href="mailto:bidishabdalai@gmail.com">bidishabdalai@gmail.com</a></p>
+
+
+                <p style="margin-top: 28px;"><strong> Institutional Email:</strong><br>
+                <a href="mailto:bidisha.dalai@my.utsa.edu">bidisha.dalai@my.utsa.edu</a></p>
+                
+                <p style="margin-top: 20px;"><strong>LinkedIn:</strong><br>
+                <a href="https://linkedin.com/in/bidisha-dalai" target="_blank">linkedin.com/in/bidisha-dalai</a></p>
+                
+                <p style="margin-top: 20px;"><strong>GitHub:</strong><br>
+                <a href="https://github.com/bidishadalai" target="_blank">github.com/bidishadalai</a></p>
+                
+        
+                
                 <p style="margin-top: 24px;"><strong>Core Technologies:</strong></p>
                 <div>
                     <span class="skill-tag">React</span>
@@ -586,6 +720,11 @@
                     <span class="skill-tag">AWS</span>
                     <span class="skill-tag">Docker</span>
                     <span class="skill-tag">Git</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">HTML/CSS</span>
+
                 </div>
             </div>
         </div>
@@ -668,35 +807,66 @@
                     <div class="window-control minimize"></div>
                     <div class="window-control maximize"></div>
                 </div>
-                <div class="window-title">Projects</div>
+                <div class="window-title">Notes</div>
                 <div style="width: 52px;"></div>
             </div>
-            <div class="window-content">
-                <h2>Featured Work</h2>
-                <div class="project-grid">
-                    <div class="project-card">
-                        <h3>🚀 Project Alpha</h3>
-                        <p>Real-time collaboration platform with WebRTC, supporting 10K+ concurrent users. Built with React, Node.js, Redis.</p>
+            <div class="window-content" style="padding: 0; display: flex;">
+                <div class="notes-container">
+                    <div class="notes-sidebar">
+                        <ul class="notes-list">
+                            <li class="note-item pinned active" onclick="viewNote(this, 0)">
+                                <div class="note-item-header">
+                                    <div class="note-title">5 affirmations</div>
+                                </div>
+                                <div class="note-date">9/29/25</div>
+                                <div class="note-preview">i try to live by these. emphasis on "try". this may take way too long to learn but hey, that's what life is exactly for.</div>
+                            </li>
+                            <li class="note-item" onclick="viewNote(this, 1)">
+                                <div class="note-item-header">
+                                    <div class="note-title">observations</div>
+                                </div>
+                                <div class="note-date">12/21/25</div>
+                                <div class="note-preview">momo:</div>
+                            </li>
+                            <li class="note-item" onclick="viewNote(this, 2)">
+                                <div class="note-item-header">
+                                    <div class="note-title">APP IDEAS???</div>
+                                </div>
+                                <div class="note-date">12/18/25</div>
+                                <div class="note-preview">& some features idk</div>
+                            </li>
+                            <li class="note-item" onclick="viewNote(this, 3)">
+                                <div class="note-item-header">
+                                    <div class="note-title"> i love bruno mars </div>
+                                </div>
+                                <div class="note-date">10/10/25</div>
+                                <div class="note-preview"> i shouldnt have woken up late becuz now i have no bruno mars concert tickets :3 </div>
+                            </li>
+                            <li class="note-item" onclick="viewNote(this, 4)">
+                                <div class="note-item-header">
+                                    <div class="note-title">Agenda august 21th</div>
+                                </div>
+                                <div class="note-date">9/17/25</div>
+                                <div class="note-preview">10 minute quick exercise</div>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="project-card">
-                        <h3>🤖 ML Recommender</h3>
-                        <p>Recommendation engine using collaborative filtering and neural networks. 92% accuracy on test data.</p>
-                    </div>
-                    <div class="project-card">
-                        <h3>📱 Mobile App</h3>
-                        <p>Cross-platform app with 100K+ downloads. React Native, Firebase, Stripe integration.</p>
-                    </div>
-                    <div class="project-card">
-                        <h3>⚡ DevTools Extension</h3>
-                        <p>Chrome extension for developers with 5K+ active users. Vanilla JS, Chrome APIs.</p>
-                    </div>
-                    <div class="project-card">
-                        <h3>🌐 Open Source</h3>
-                        <p>Core contributor to [Popular Library]. 500+ commits, 50+ merged PRs.</p>
-                    </div>
-                    <div class="project-card">
-                        <h3>🎮 Game Engine</h3>
-                        <p>Custom 2D game engine built from scratch in C++. Physics, rendering, audio systems.</p>
+                    <div class="notes-content">
+                        <div class="note-view-header">
+                            <div class="note-view-title" id="noteTitle">5 affirmations</div>
+                            <div class="note-view-date" id="noteDate">September 29, 2025 at 5:40 AM</div>
+                        </div>
+                        <div class="note-view-text" id="noteText">– don't be too comfortable with other people. notice when you are too vulnerable and nice
+– have boundaries do not tell everything to people
+– you don't have to be the most productive but effort matters. do something productive everyday.
+– try to do the good deed everyday (everyone is going through something)
+– do not be too comfortable either your habits
+– find people like you.
+– never settle
+– don't lose the plot
+– not wanting something is just as good as having it.
+– don't categorize every friend in the same category, all serve a different purpose.
+– Never idolize an</div>
                     </div>
                 </div>
             </div>
@@ -764,11 +934,11 @@
     </div>
 
     <div class="dock">
-        <div class="dock-icon about" data-label="Contacts" onclick="openWindow('about-window')"><img src="icons/about.svg" alt=""></div>
-        <div class="dock-icon resume" data-label="Resume" onclick="openWindow('resume-window')"><img src="icons/resume.svg" alt=""></div>
-        <div class="dock-icon experience" data-label="Notes" onclick="openWindow('experience-window')"><img src="icons/experience.svg" alt=""></div>
-        <div class="dock-icon projects" data-label="Finder" onclick="openWindow('projects-window')"><img src="icons/projects.svg" alt=""></div>
-        <div class="dock-icon photos" data-label="Photos" onclick="openWindow('photos-window')"><img src="icons/photos.svg" alt=""></div>
+        <div class="dock-icon about" data-label="Contacts" onclick="openWindow('about-window')"><img src="icons/contacts.png" alt="Contacts"></div>
+        <div class="dock-icon resume" data-label="Resume" onclick="openWindow('resume-window')"><img src="icons/ZIP.png" alt="Resume"></div>
+        <!-- <div class="dock-icon experience" data-label="Notes" onclick="openWindow('experience-window')"><img src="icons/notes.png" alt="Notes"></div> -->
+        <div class="dock-icon projects" data-label="Notes" onclick="openWindow('projects-window')"><img src="icons/notes.png" alt="Notes"></div>
+        <div class="dock-icon photos" data-label="Photos" onclick="openWindow('photos-window')"><img src="icons/photos.png" alt="Photos"></div>
     
     </div>
 
@@ -813,6 +983,51 @@
             element.style.zIndex = ++highestZ;
         }
 
+        // Notes app functionality
+        const notesData = [
+            {
+                title: "affirmations",
+                date: "September 29, 2025 at 5:40 AM",
+                content: "i try to live by these. emphasis on \"try\". this may take way too long to learn but hey, that's what life is exactly for. not to make an excuse or anything, i've just learned that it takes me a long time to adapt to the long game of life. other ppl might call me irresponsible or careless and they are wrong. i am just realistic, ive tried to change myself way too often."
+            },
+            {
+                title: "observations",
+                date: "December 21, 2025 at 3:15 PM",
+                content: "momo:"
+            },
+            {
+                title: "APP IDEAS???",
+                date: "December 18, 2025 at 11:20 AM",
+                content: "& some features idk"
+            },
+            {
+                title: " i love bruno mars ",
+                date: "October 10, 2025 at 8:30 PM",
+                content: " i shouldnt have woken up late becuz now i have no bruno mars concert tickets :3 "
+            },
+            {
+                title: "Agenda august 21th",
+                date: "September 17, 2025 at 2:45 PM",
+                content: "10 minute quick exercise"
+            }
+        ];
+
+        function viewNote(element, index) {
+            // Remove active class from all notes
+            document.querySelectorAll('.note-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Add active class to clicked note
+            element.classList.add('active');
+            
+            // Update the note view
+            const note = notesData[index];
+            document.getElementById('noteTitle').textContent = note.title;
+            document.getElementById('noteDate').textContent = note.date;
+            document.getElementById('noteText').textContent = note.content;
+        }
+
         // Enhanced dragging with momentum
         document.querySelectorAll('.window').forEach(win => {
             const header = win.querySelector('.window-header');
@@ -824,7 +1039,7 @@
                 isDragging = true;
                 bringToFront(win);
                 initialX = e.clientX - win.offsetLeft;
-                initialY = e.clientY - initialY;
+                initialY = e.clientY - win.offsetTop;
                 win.style.transition = 'none';
             });
 
@@ -835,6 +1050,7 @@
                 currentY = e.clientY - initialY;
                 win.style.left = currentX + 'px';
                 win.style.top = currentY + 'px';
+                win.style.transform = 'none';
             });
 
             document.addEventListener('mouseup', () => {
@@ -849,8 +1065,11 @@
             });
         });
 
-        // Parallax effect on mouse move
+        // Parallax effect on mouse move - disabled during drag
+        let isDraggingAny = false;
         document.addEventListener('mousemove', (e) => {
+            if (isDraggingAny) return;
+            
             const windows = document.querySelectorAll('.window.active');
             const mouseX = e.clientX / window.innerWidth - 0.5;
             const mouseY = e.clientY / window.innerHeight - 0.5;
@@ -865,7 +1084,7 @@
             // Typewriter initialization for the left intro
             (function(){
                 const el = document.getElementById('typewriter');
-                const text = "Hello there, I'm Bidisha Dalai";
+                const text = "Hi there, I'm Bidisha! Navigate through any of the apps to find out more.";
 
                 // Try Flowbase Typewriter if loaded
                 try {
